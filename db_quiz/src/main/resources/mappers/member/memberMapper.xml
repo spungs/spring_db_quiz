@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.db_quiz.repository.IMemberDAO">
+	<insert id="insert" parameterType="com.care.db_quiz.dto.MemberDTO">
+		INSERT INTO session_quiz VALUES(#{id},#{pw},#{username},#{address},#{mobile})
+	</insert>
+	<select id="selectId" 
+			parameterType="String" 
+			resultType="com.care.db_quiz.dto.MemberDTO">
+		SELECT * FROM session_quiz WHERE id=#{id}
+	</select>
+	<select id="list" resultType="com.care.db_quiz.dto.MemberDTO">
+		SELECT * FROM session_quiz
+	</select>
+	<update id="update" parameterType="com.care.db_quiz.dto.MemberDTO">
+		UPDATE session_quiz SET pw=#{pw}, username=#{username}, address=#{address}, mobile=#{mobile} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM session_quiz WHERE id=#{id}
+	</delete>
+</mapper>
